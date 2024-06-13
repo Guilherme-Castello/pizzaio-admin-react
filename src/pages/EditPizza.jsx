@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import api_client from '../config/api_client';
 import Input from '../components/Input';
+import PizzaioBlock from '../components/PizzaioBlock';
 
 export default function EditPizza() {
   const { id } = useParams();
@@ -29,9 +30,7 @@ export default function EditPizza() {
   }
 
   return (
-    <div className="container mx-auto mt-8">
-      <h1 className="text-2xl font-bold mb-4">Edição de Pizzas</h1>
-      <div className="bg-yellow-400/50 p-4 rounded-lg mb-4">
+    <PizzaioBlock name='Editar Pizza'>
         <Input value={flavour} setValue={setFlavour} label='Nome da pizza'/>
         <Input value={description} setValue={setDescription} label='Nome da pizza'/>
         <Input value={priceInCents} setValue={setPriceInCents} label='Nome da pizza'/>
@@ -41,7 +40,6 @@ export default function EditPizza() {
         >
           Atualizar Pizza
         </Button>
-      </div>
-    </div>
+    </PizzaioBlock>
   );
 }
