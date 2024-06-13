@@ -13,7 +13,6 @@ api_client.interceptors.request.use((config) => {
   
     config.params = {
     ...config.params,
-    user_ip: true
     }
   return config
 })

@@ -1,38 +1,42 @@
 // src/components/PizzaCreator.js
 import React, { useState } from 'react';
 import Button from '../components/Button';
-export default function CreatePizza() {
-  const [name, setName] = useState('');
-  const [ingredients, setIngredients] = useState('');
-  const [price, setPrice] = useState('');
+import api_client from '../config/api_client';
+import { useNavigate  } from 'react-router-dom';
 
-  const handleAddPizza = () => {
-    
+export default function CreatePizza() {
+  const [flavour, setflavour] = useState('');
+  const [description, setDescription] = useState('');
+  const [priceInCents, setPriceInCents] = useState('');
+  const navigate = useNavigate();
+  async function handleAddPizza(){
+    await api_client.post('pizzas', {flavour, price_in_cents: parseInt(priceInCents), size: 32, description}).then(response => console.log(response))
+    navigate('/')
   };
 
   return (
     <div className="container mx-auto mt-8">
       <h1 className="text-2xl font-bold mb-4">Criação de Pizzas</h1>
-      <div className="bg-yellow-200 p-4 rounded-lg mb-4">
+      <div className="bg-yellow-400/50 p-4 rounded-lg mb-4">
         <label className="block mb-2">Nome da Pizza</label>
         <input
           type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={flavour}
+          onChange={(e) => setflavour(e.target.value)}
           className="p-2 border rounded w-full mb-4"
         />
-        <label className="block mb-2">Ingredientes (separados por vírgula)</label>
+        <label className="block mb-2">Pizza description</label>
         <input
           type="text"
-          value={ingredients}
-          onChange={(e) => setIngredients(e.target.value)}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
           className="p-2 border rounded w-full mb-4"
         />
         <label className="block mb-2">Preço</label>
         <input
           type="text"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
+          value={priceInCents}
+          onChange={(e) => setPriceInCents(e.target.value)}
           className="p-2 border rounded w-full mb-4"
         />
         <Button
