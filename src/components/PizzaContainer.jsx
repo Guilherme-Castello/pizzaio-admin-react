@@ -24,7 +24,7 @@ export default function PizzaContainer({ pizza }) {
       </div>
       <div className="w-[20%] justify-center items-center flex gap-4">
         <Button extraClasses="!bg-blue-700" onClick={() => navigate(`editpizza/${pizza.id}`)}>Edit</Button>
-        <Button>Delete</Button>
+        <Button onClick={() => navigate(`deletepizza/${pizza.id}`)}>Delete</Button>
       </div>
     </div>
   )

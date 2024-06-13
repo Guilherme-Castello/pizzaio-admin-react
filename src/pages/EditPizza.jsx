@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import api_client from '../config/api_client';
+import Input from '../components/Input';
 
 export default function EditPizza() {
   const { id } = useParams();
@@ -31,27 +32,9 @@ export default function EditPizza() {
     <div className="container mx-auto mt-8">
       <h1 className="text-2xl font-bold mb-4">Edição de Pizzas</h1>
       <div className="bg-yellow-400/50 p-4 rounded-lg mb-4">
-        <label className="block mb-2">Nome da Pizza</label>
-        <input
-          type="text"
-          value={flavour}
-          onChange={(e) => setFlavour(e.target.value)}
-          className="p-2 border rounded w-full mb-4"
-        />
-        <label className="block mb-2">Descrição da Pizza</label>
-        <input
-          type="text"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          className="p-2 border rounded w-full mb-4"
-        />
-        <label className="block mb-2">Preço</label>
-        <input
-          type="text"
-          value={priceInCents}
-          onChange={(e) => setPriceInCents(e.target.value)}
-          className="p-2 border rounded w-full mb-4"
-        />
+        <Input value={flavour} setValue={setFlavour} label='Nome da pizza'/>
+        <Input value={description} setValue={setDescription} label='Nome da pizza'/>
+        <Input value={priceInCents} setValue={setPriceInCents} label='Nome da pizza'/>
         <Button
           onClick={handleEditPizza}
           extraClasses='!bg-green-600'

@@ -9,7 +9,7 @@ export default function Home() {
   
   return (
     <main className="flex min-h-screen flex-col items-center gap-10 p-10">
-      <p>Pizza List</p>
+      <h1 className="text-2xl font-bold mb-4">Pizzas Cadastradas</h1>
       {pizzas && pizzas.map((pizza, index) => {
         return(
           <PizzaContainer key={index} pizza={pizza}/>
